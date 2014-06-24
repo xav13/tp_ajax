@@ -1,0 +1,39 @@
+<?php 
+$this->setTitle('Accueil');
+$this->setDescription('Page d\'Acceuil du site');
+?>
+
+<div class="container">
+    
+	    <h3>Gestion d'un espace membre</h3>
+
+	<a href="enregistrementUser"><button class= "btn btn-success">S'enregistrer</button></a>
+
+	<h3> Se connecter </h3>
+	<form class="form-horizontal" method = "post" action = "home?action=connexion">
+
+	<?php echo $this->form->input('emaillog','Email'); ?>
+	<?php echo $this->form->input('mdplog','Mot de passe',array('type'=>'password')); ?>
+
+	<input type="submit" class ="col-xs-2 col-xs-offset-3 btn btn-warning" value = "Connexion"/>
+
+	</form>
+
+	<div class = "col-md-12">
+		<h4>
+		<?php echo $this->session->flash();?>
+		<h4>
+	</div>
+
+	<?php if (isset($_SESSION['email_User'])) : ?>
+		<a href="home?action=deconnexion"><button class= "btn btn-danger">Se déconnecter</button></a>
+	<?php endif; ?>
+
+	<?php if (isset($_SESSION['admin']) AND ($_SESSION['admin'] == true)) : ?>
+		<h2> Proposer à l'admin de choisir un user ( a développer)  </h2>
+	<?php endif;?>
+
+
+
+</div> <!-- Container -->
+
