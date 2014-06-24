@@ -11,9 +11,10 @@ $this->setDescription('Page d\'Acceuil du site');
 
 <h3> Se connecter </h3>
 <form class="form-horizontal" method = "post" action = "connexion">
-
+<?php echo $this->test;?>
 <?php echo $this->form->input('emaillogin','Email'); ?>
-    <?php echo $this->form->input('mdplogin','Mot de passe',array('type'=>'password')); ?>
+<?php echo $this->form->input('mdplogin','Mot de passe',array('type'=>'password')); ?>
+
 
 <input type="submit" class ="col-xs-2 col-xs-offset-3 btn btn-warning" value = "Connexion"/>
 

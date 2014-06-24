@@ -63,19 +63,7 @@ class User extends Model
 		$this->db->query($sql);
 		return $this->db->lastinsertId();
 	}
-	public function getInfoUser($iduser)
-    { 
-    	$infos = array();
-        $req = $this->db->prepare("SELECT * FROM users WHERE iduser = '$iduser' ");
-		$req->execute();
-		foreach ($req as $r) {
-			$infos['iduser'] = $r['iduser'];
-			$infos['password'] = $r['password'];
-			$infos['login'] = $r['login'];
-			$infos['admin'] = $r['admin'];
-		}
-		return $infos;
-	}
+
 	public function isAdmin($iduser)
     {
         $infos = $this->getInfoUser($iduser);

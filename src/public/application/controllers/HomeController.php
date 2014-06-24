@@ -14,6 +14,8 @@ class HomeController extends Controller
     */
     public function index()
     {
+        $this->loadModel('User','form'); 
+        $this->view->form = $this->User->form;
     }
     /*
     *

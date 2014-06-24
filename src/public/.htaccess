@@ -1,12 +1,8 @@
  <IfModule mod_rewrite.c>  
-    AddType x-mapp-php5 .php
-	AddHandler x-mapp-php5 .php
-
     Options +FollowSymlinks -Indexes
 
     RewriteEngine On
 
-	RewriteBase /
     
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

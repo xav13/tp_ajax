@@ -60,10 +60,12 @@ class Controller
             $file = MODEL_PATH . DS .$name.'.php'; 
             require_once($file);
             $this->$name = new $name();
+            echo'test';
             //if(isset($this->form)){
                // $this->$name->form = $this->form;  
             //}
             if(isset($form)){
+                echo'testform';
             $this->$name->form = new Form();
             $this->$name->form->data = $this->request->data;
             }

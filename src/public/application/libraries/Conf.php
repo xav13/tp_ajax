@@ -1,6 +1,7 @@
 <?php
 class Conf{
 	
+	static $debug = 1; 
 	static $databases = array(
 //developpement
 		'default' => array(
