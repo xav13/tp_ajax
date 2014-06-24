@@ -14,36 +14,36 @@ class Enregistrement_utilisateurController extends Controller
     */
     public function index()
     {
-        $this->loadModel('Client','form');
-        $this->view->form = $this->Client->form;
+        $this->loadModel('User','form');
+        $this->view->form = $this->User->form;
     }
     /**
-    * Permet d'enregistrr un utilisateur dans la table client et user
+    * Permet d'enregistrr un utilisateur dans la table User et user
     **/
     function EnregistrementUtilisateur($id = null){
-        $this->loadModel('Client','form'); 
-        $this->view->form = $this->Client->form;
+        $this->loadModel('User','form'); 
+        $this->view->form = $this->User->form;
 
         if($this->request->data){
-            if($this->Client->validates($this->request->data)){
+            if($this->User->validates($this->request->data)){
                 //On commence par enregistrer les informations dans la table user
-                $this->Client->table = 'users';
+                $this->User->table = 'users';
                 $dataToUser['password'] = $this->request->data->mdp ;
                 $dataToUser['admin'] = 0 ;
-                $this->Client->save($dataToUser);
-                $idLastUser = $this->Client->db->lastinsertId();
+                $this->User->save($dataToUser);
+                $idLastUser = $this->User->db->lastinsertId();
 
-                // On eneleve le email_confirmation et mdp_confirmation et submit avant d'executer la requete dans la table Client
-                $dataToClient = $this->request->data;
-                $dataToClient->iduser = $idLastUser;
-                $dataToClient->date_ajout = date("Y-m-d");
-                unset($dataToClient->email_confirmation);
-                unset($dataToClient->mdp_confirmation);
-                unset($dataToClient->mdp);
-                unset($dataToClient->submit);
+                // On eneleve le email_confirmation et mdp_confirmation et submit avant d'executer la requete dans la table User
+                $dataToUser = $this->request->data;
+                $dataToUser->iduser = $idLastUser;
+                $dataToUser->date_ajout = date("Y-m-d");
+                unset($dataToUser->email_confirmation);
+                unset($dataToUser->mdp_confirmation);
+                unset($dataToUser->mdp);
+                unset($dataToUser->submit);
 
-                $this->Client->table = 'clients';
-                $this->Client->save($dataToClient);
+                $this->User->table = 'Users';
+                $this->User->save($dataToUser);
 
                 $this->Session->setFlash('Votre compte a bien été crée');
                 //$this->redirect('home');
@@ -51,7 +51,7 @@ class Enregistrement_utilisateurController extends Controller
                 $this->Session->setFlash('Merci de corriger vos informations','error'); 
             }      
         }elseif($id){
-            $this->request->data = $this->Client->findFirst(array(
+            $this->request->data = $this->User->findFirst(array(
                 'conditions' => array('id'=>$id)
             ));
         }

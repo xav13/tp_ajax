@@ -7,7 +7,7 @@ class Model
 	public $conf = 'default';
 	public $table = false; 
 	public $db; 
-	public $primaryKey = 'idclient'; 
+	public $primaryKey = 'idUser'; 
 	public $id; 
 	public $errors = array();
 	public $form ; 

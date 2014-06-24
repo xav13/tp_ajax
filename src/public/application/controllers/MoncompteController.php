@@ -1,5 +1,5 @@
 <?php
-require MODEL_PATH . DS . 'Client.php'; 
+require MODEL_PATH . DS . 'User.php'; 
 /**
  * Controller enregistrement de l'uitlisateur l'application, correspond à la page enregistrement utilisateur du site
  * 
@@ -15,17 +15,17 @@ class MoncompteController extends Controller
     */
     public function index()
     {
-    	$this->loadModel('Client');
-    	$this->view->infos_client = $this->Client->getInfoClient($_SESSION['email_client']);
+    	$this->loadModel('User');
+    	$this->view->infos_User = $this->User->getInfoUser($_SESSION['email_User']);
     }
     public function listecommandes()
     {
     	$this->view->setRoute('mescommandes');
     	$this->loadModel('Commande');
-    	$this->loadModel('Client');
-    	$this->view->infos_client = $this->Client->getInfoClient($_SESSION['email_client']);
-    	$idclient = $this->view->infos_client['idclient'];
-    	$this->view->commandes = $this->Commande->getCommandesClient($idclient);
+    	$this->loadModel('User');
+    	$this->view->infos_User = $this->User->getInfoUser($_SESSION['email_User']);
+    	$idUser = $this->view->infos_User['idUser'];
+    	$this->view->commandes = $this->Commande->getCommandesUser($idUser);
     }
     public function mesinformation(){
     	
